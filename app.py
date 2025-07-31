@@ -4,8 +4,13 @@ import pickle
 import numpy as np
 from datetime import datetime
 import os
+from flask import Flask
 
 app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Flask is working on Railway!"
 
 # Load model dan data
 def load_models():
