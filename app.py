@@ -119,10 +119,8 @@ def predict():
         
         # Analisis kepadatan berdasarkan cluster
         density_analysis = {
-            0: "Kepadatan Rendah - Layanan normal, tidak ada kemacetan signifikan",
-            1: "Kepadatan Sedang - Beberapa penumpang, layanan tetap lancar",
-            2: "Kepadatan Tinggi - Banyak penumpang, kemungkinan ada antrian",
-            3: "Kepadatan Sangat Tinggi - Kemacetan parah, layanan terhambat"
+            0: "Sepi – Layanan sangat lancar, penumpang sangat sedikit.",
+            1: "Padat – Penumpang ramai, kemungkinan terjadi antrian."
         }
         
         # Get density label yang konsisten
@@ -148,32 +146,48 @@ def get_recommendation(cluster, waktu):
     if cluster == 0:  # Kepadatan Rendah
         if waktu == "Pagi (05:00-09:00)":
             return "Rute ini relatif lancar meskipun pada waktu puncak pagi. Anda dapat menggunakan transportasi ini dengan nyaman."
-        elif waktu == "Dini (21:00-05:00)":
+        elif waktu == "Dini Hari (21:00-05:00)":
             return "Rute ini sangat lancar pada waktu dini hari. Perjalanan akan sangat nyaman dan cepat."
+        elif waktu == "Malam (18:00-21:00)":
+            return "Rute ini relatif lancar pada waktu malam. Anda dapat menggunakan transportasi ini dengan nyaman."
+        elif waktu == "Sore (15:00-18:00)":
+            return "Rute ini relatif lancar pada waktu sore. Anda dapat menggunakan transportasi ini tanpa khawatir kemacetan."
         else:
             return "Rute ini relatif lancar. Anda dapat menggunakan transportasi ini tanpa khawatir kemacetan."
     
     elif cluster == 1:  # Kepadatan Sedang
         if waktu == "Pagi (05:00-09:00)":
             return "Rute ini memiliki kepadatan sedang pada waktu puncak pagi. Pertimbangkan untuk berangkat sedikit lebih awal."
-        elif waktu == "Dini (21:00-05:00)":
+        elif waktu == "Dini Hari (21:00-05:00)":
             return "Rute ini memiliki kepadatan sedang meskipun pada waktu dini hari. Perjalanan tetap lancar."
+        elif waktu == "Malam (18:00-21:00)":
+            return "Rute ini memiliki kepadatan sedang pada waktu malam. Perjalanan akan tetap nyaman."
+        elif waktu == "Sore (15:00-18:00)":
+            return "Rute ini memiliki kepadatan sedang pada waktu sore. Perjalanan akan tetap nyaman."
         else:
             return "Rute ini memiliki kepadatan sedang. Perjalanan akan tetap nyaman."
     
     elif cluster == 2:  # Kepadatan Tinggi
         if waktu == "Pagi (05:00-09:00)":
             return "Rute ini cukup padat pada waktu puncak pagi. Disarankan untuk mencari alternatif rute atau waktu perjalanan."
-        elif waktu == "Dini (21:00-05:00)":
+        elif waktu == "Dini Hari (21:00-05:00)":
             return "Rute ini cukup padat meskipun pada waktu dini hari. Pertimbangkan untuk mencari alternatif transportasi."
+        elif waktu == "Malam (18:00-21:00)":
+            return "Rute ini cukup padat pada waktu malam. Disarankan untuk mencari alternatif rute atau waktu perjalanan."
+        elif waktu == "Sore (15:00-18:00)":
+            return "Rute ini cukup padat pada waktu sore. Disarankan untuk mencari alternatif rute atau waktu perjalanan."
         else:
             return "Rute ini cukup padat. Disarankan untuk mencari alternatif rute atau waktu perjalanan."
     
     elif cluster == 3:  # Kepadatan Sangat Tinggi
         if waktu == "Pagi (05:00-09:00)":
             return "Rute ini sangat padat pada waktu puncak pagi. Sangat disarankan untuk mencari alternatif transportasi atau menunda perjalanan."
-        elif waktu == "Dini (21:00-05:00)":
+        elif waktu == "Dini Hari (21:00-05:00)":
             return "Rute ini sangat padat meskipun pada waktu dini hari. Sangat disarankan untuk mencari alternatif transportasi."
+        elif waktu == "Malam (18:00-21:00)":
+            return "Rute ini sangat padat pada waktu malam. Sangat disarankan untuk mencari alternatif transportasi atau menunda perjalanan."
+        elif waktu == "Sore (15:00-18:00)":
+            return "Rute ini sangat padat pada waktu sore. Sangat disarankan untuk mencari alternatif transportasi atau menunda perjalanan."
         else:
             return "Rute ini sangat padat. Sangat disarankan untuk mencari alternatif transportasi atau menunda perjalanan."
     
